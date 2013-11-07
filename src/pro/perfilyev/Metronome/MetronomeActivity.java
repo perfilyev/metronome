@@ -3,13 +3,13 @@ package pro.perfilyev.Metronome;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MetronomeActivity extends Activity {
   TextView beat;
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -17,9 +17,17 @@ public class MetronomeActivity extends Activity {
 
     beat = (TextView) findViewById(R.id.beatText);
 
+    Window win = getWindow();
+    WindowManager.LayoutParams winParams = win.getAttributes();
+    final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+    winParams.flags |= bits;
+    win.setAttributes(winParams);
+    getActionBar().hide();
+
     final Handler timerHandler = new Handler();
     Runnable timerRunnable = new Runnable() {
       int current = 1;
+
       @Override
       public void run() {
         beat.setText(String.valueOf(current));
@@ -34,7 +42,6 @@ public class MetronomeActivity extends Activity {
     timerHandler.postDelayed(timerRunnable, 0);
 
   }
-
 
 
 }
