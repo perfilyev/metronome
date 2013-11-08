@@ -23,5 +23,16 @@
           android:text="4"
           android:textSize="66dp"
           />
+  <TextView
+          android:layout_weight="1"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:background="#7f00"
+          android:gravity="center"
+          android:text="120bpm"
+          android:textSize="26dp"
+          android:id="@+id/bpsText"
+          />
+
 </LinearLayout>
 
